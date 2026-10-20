@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-video-workflows/scene.schema.json",
+  "title": "Executable Blender scene layout, separate from imported screenplay",
+  "type": "object",
+  "required": ["schema_version", "materials", "objects", "scenes", "cameras", "shots"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "materials": {"type": "object", "additionalProperties": {"$ref": "#/$defs/material"}},
+    "objects": {"type": "array", "items": {"$ref": "#/$defs/object"}},
+    "scenes": {"type": "object", "additionalProperties": {"$ref": "#/$defs/scene"}},
+    "cameras": {"type": "object", "additionalProperties": {"$ref": "#/$defs/camera"}},
+    "shots": {"type": "object", "additionalProperties": {"$ref": "#/$defs/shot"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,95}$"},
+    "vector": {"type": "array", "items": {"type": "number"}, "minItems": 3, "maxItems": 3},
+    "positiveVector": {"type": "array", "items": {"type": "number", "exclusiveMinimum": 0}, "minItems": 3, "maxItems": 3},
+    "color": {"type": "array", "items": {"type": "number", "minimum": 0, "maximum": 1}, "minItems": 3, "maxItems": 3},
+    "target": {"oneOf": [{"$ref": "#/$defs/vector"}, {"$ref": "#/$defs/id"}]},
+    "material": {
+      "type": "object", "required": ["base_color"], "additionalProperties": false,
+      "properties": {"base_color": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number", "minimum": 0, "maximum": 1}}, "roughness": {"type": "number", "minimum": 0, "maximum": 1}}
+    },
+    "object": {
+      "type": "object", "required": ["id", "type"], "additionalProperties": false,
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "type": {"enum": ["box", "sphere", "cylinder", "cone", "plane", "empty", "actor", "text"]},
+        "parent": {"$ref": "#/$defs/id"}, "material": {"$ref": "#/$defs/id"},
+        "location": {"$ref": "#/$defs/vector"}, "rotation_degrees": {"$ref": "#/$defs/vector"},
+        "scale": {"$ref": "#/$defs/positiveVector"}, "dimensions": {"$ref": "#/$defs/positiveVector"},
+        "text": {"type": "string", "maxLength": 2000}
+      }
+    },
+    "scene": {
+      "type": "object", "required": ["objects"], "additionalProperties": false,
+      "properties": {"objects": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}, "background": {"$ref": "#/$defs/color"}}
+    },
+    "camera": {
+      "type": "object", "required": ["location", "target"], "additionalProperties": false,
+      "properties": {"location": {"$ref": "#/$defs/vector"}, "target": {"$ref": "#/$defs/target"}, "lens_mm": {"type": "number", "exclusiveMinimum": 0}, "projection": {"enum": ["perspective", "orthographic"]}, "ortho_scale": {"type": "number", "exclusiveMinimum": 0}},
+      "allOf": [{"if": {"required": ["projection"], "properties": {"projection": {"const": "orthographic"}}}, "then": {"required": ["ortho_scale"]}}]
+    },
+    "keyframe": {
+      "type": "object", "required": ["frame", "value"], "additionalProperties": false,
+      "properties": {"frame": {"type": "integer", "minimum": 1}, "value": {"$ref": "#/$defs/vector"}}
+    },
+    "animation": {
+      "type": "object", "required": ["object", "property", "keyframes"], "additionalProperties": false,
+      "properties": {"object": {"$ref": "#/$defs/id"}, "property": {"enum": ["location", "rotation_degrees", "scale"]}, "interpolation": {"enum": ["LINEAR", "BEZIER", "CONSTANT"]}, "keyframes": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/keyframe"}}}
+    },
+    "cameraKeyframe": {
+      "type": "object", "required": ["frame"], "additionalProperties": false,
+      "properties": {"frame": {"type": "integer", "minimum": 1}, "location": {"$ref": "#/$defs/vector"}, "target": {"$ref": "#/$defs/target"}, "lens_mm": {"type": "number", "exclusiveMinimum": 0}}
+    },
+    "shot": {
+      "type": "object", "required": ["scene"], "additionalProperties": false,
+      "properties": {"mode": {"enum": ["declarative", "external_blend"]}, "scene": {"type": "string", "minLength": 1}, "camera": {"$ref": "#/$defs/id"}, "animation": {"type": "array", "items": {"$ref": "#/$defs/animation"}}, "camera_keyframes": {"type": "array", "items": {"$ref": "#/$defs/cameraKeyframe"}}},
+      "allOf": [{"if": {"not": {"required": ["mode"], "properties": {"mode": {"const": "external_blend"}}}}, "then": {"required": ["camera"]}}]
+    }
+  }
+}

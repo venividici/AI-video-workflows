@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "id": "my-project",
+  "title": "New video project",
+  "fps": 24,
+  "resolution": [1280, 720],
+  "paths": {
+    "shots": "shots.json",
+    "scene": "scene.json",
+    "build": "build",
+    "renders": "renders",
+    "outputs": "outputs",
+    "references": "references"
+  },
+  "provider": {"name": "seedance", "mode": "manual", "model": null}
+}

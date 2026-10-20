@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/aivw/project.schema.json",
+  "title": "AI video workflow project",
+  "type": "object",
+  "required": ["schema_version", "id", "title", "fps", "resolution", "paths", "provider"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"},
+    "title": {"type": "string", "minLength": 1},
+    "fps": {"type": "integer", "minimum": 1},
+    "resolution": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {"type": "integer", "minimum": 2, "multipleOf": 2}
+    },
+    "paths": {
+      "type": "object",
+      "required": ["shots", "scene", "build", "renders", "outputs", "references"],
+      "properties": {
+        "shots": {"$ref": "#/$defs/path"},
+        "scene": {"$ref": "#/$defs/path"},
+        "build": {"$ref": "#/$defs/path"},
+        "renders": {"$ref": "#/$defs/path"},
+        "outputs": {"$ref": "#/$defs/path"},
+        "references": {"$ref": "#/$defs/path"}
+      },
+      "additionalProperties": true
+    },
+    "provider": {
+      "type": "object", "required": ["name", "mode"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "mode": {"enum": ["manual", "api"]},
+        "model": {"type": ["string", "null"]}
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "path": {
+      "type": "string", "minLength": 1,
+      "description": "Project-relative path. CLI additionally rejects absolute paths, escapes, symlink escapes and collisions."
+    }
+  },
+  "additionalProperties": true
+}

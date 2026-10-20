@@ -1,0 +1,10 @@
+{
+  "shot_number": "Shot",
+  "duration_seconds": "Seconds",
+  "description": "Action",
+  "dialogue": "Dialogue",
+  "scene_id": "Scene",
+  "camera": "Camera",
+  "framing": "Framing",
+  "notes": "Notes"
+}

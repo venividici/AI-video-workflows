@@ -1,0 +1,66 @@
+{
+  "method": "A fresh agent was given the repository skill and a new three-second scene request, then executed it without changing repository code.",
+  "request": "Blue sphere left of a red cube on gray ground; camera moves slowly right; both objects fully visible.",
+  "video": {
+    "file": "independent-trial.mp4",
+    "sha256": "58006a6168cae2450fc8be5e60ab690a75f95cf4d4898b9fcf084291736df9bc",
+    "frames": 72,
+    "fps": 24,
+    "resolution": [
+      320,
+      180
+    ],
+    "duration_seconds": 3.0,
+    "decode_returncode": 0
+  },
+  "scene": {
+    "blender_version": "4.5.3 LTS",
+    "all_72_frames_fully_in_frame": true,
+    "all_72_frames_blue_left_of_red_with_gap": true,
+    "minimum_normalized_frame_margin": 0.14000295102596283,
+    "camera_x_monotone_increasing": true,
+    "camera_start": [
+      0.0,
+      -8.5,
+      3.0
+    ],
+    "camera_end": [
+      1.2000000476837158,
+      -8.5,
+      3.0
+    ],
+    "floor_contacts_at_z_0": true,
+    "object_centers_static": true
+  },
+  "review": {
+    "reviewer": "codex",
+    "verdict": "pass",
+    "method": "All 72 decoded frames inspected in three ordered contact sheets; no real-time player inspection.",
+    "human_review": false
+  },
+  "source_sha256": {
+    "project.json": "57bb8bc61477ad5d2a809119dbd2dc6c1f10046a1e12e458b7b73801e10935db",
+    "shots.json": "73978e03f25de939cd16dd352dd1b7d49580fc64373468599c194b1f0d298a6b",
+    "scene.json": "18caf0d73a5441b1bad65b644d16540af73be4a2bb894e73e45680d076dd24e2"
+  },
+  "status_counts": {
+    "total": 1,
+    "built": 1,
+    "rendered": 1,
+    "review_pass": 1
+  },
+  "mcp": {
+    "addon_probe": true,
+    "stdio_probe": true,
+    "codex_session_tools_verified": false,
+    "production_path": "declarative background Blender"
+  },
+  "seedance": {
+    "offline_prepare": true,
+    "paid_tasks": 0
+  },
+  "notes": [
+    "The first preview was visually checked and its gray floor adjusted.",
+    "Concurrent repository maintenance invalidated a build; a fixed toolchain snapshot was used to rebuild all frames without mixing versions."
+  ]
+}

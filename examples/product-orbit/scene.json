@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0",
+  "materials": {
+    "chalk": {"base_color": [0.78, 0.82, 0.86, 1], "roughness": 0.8},
+    "accent": {"base_color": [0.2, 0.48, 0.57, 1], "roughness": 0.7},
+    "floor": {"base_color": [0.21, 0.24, 0.29, 1], "roughness": 1}
+  },
+  "objects": [
+    {"id": "stage", "type": "box", "location": [0, 0, -0.1], "dimensions": [6, 6, 0.2], "material": "floor"},
+    {"id": "plinth", "type": "cylinder", "location": [0, 0, 0.12], "dimensions": [1.9, 1.9, 0.24], "material": "chalk"},
+    {"id": "base", "type": "cylinder", "location": [0, 0, 0.31], "dimensions": [0.85, 0.85, 0.14], "material": "accent"},
+    {"id": "arm", "type": "cylinder", "location": [0, 0, 0.95], "dimensions": [0.09, 0.09, 1.2], "material": "chalk"},
+    {"id": "shade", "type": "cone", "location": [0, 0, 1.65], "dimensions": [1.1, 1.1, 0.65], "material": "accent"},
+    {"id": "bulb", "type": "sphere", "location": [0, 0, 1.31], "dimensions": [0.26, 0.26, 0.26], "material": "chalk"}
+  ],
+  "scenes": {"product_stage": {"objects": ["stage", "plinth", "base", "arm", "shade", "bulb"], "background": [0.07, 0.09, 0.13]}},
+  "cameras": {
+    "wide": {"location": [3.5, -4.8, 2.4], "target": [0, 0, 0.95], "lens_mm": 48},
+    "detail": {"location": [1.8, -2.6, 1.6], "target": [0, 0, 0.5], "lens_mm": 65}
+  },
+  "shots": {
+    "p001": {"scene": "product_stage", "camera": "wide", "camera_keyframes": [
+      {"frame": 1, "location": [3.5, -4.8, 2.4], "target": [0, 0, 0.95]},
+      {"frame": 24, "location": [0, -5.8, 2.4], "target": [0, 0, 0.95]},
+      {"frame": 48, "location": [-3.5, -4.8, 2.4], "target": [0, 0, 0.95]}
+    ]},
+    "p002": {"scene": "product_stage", "camera": "detail", "camera_keyframes": [
+      {"frame": 1, "location": [1.8, -2.6, 1.6], "target": [0, 0, 0.5]},
+      {"frame": 36, "location": [1.2, -1.8, 1.2], "target": [0, 0, 0.45]}
+    ]}
+  }
+}

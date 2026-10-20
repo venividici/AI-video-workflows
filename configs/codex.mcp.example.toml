@@ -1,0 +1,10 @@
+# Example only. setup-mcp discovers uvx's absolute path and preserves existing entries.
+# Keep your model, permission policy, and other MCP servers.
+[mcp_servers.blender]
+command = "uvx"
+args = ["--from", "mcp-for-blender==2.2.1", "mcp-for-blender", "--host", "127.0.0.1", "--port", "9876"]
+startup_timeout_sec = 90
+tool_timeout_sec = 120
+
+[mcp_servers.blender.env]
+BLENDER_MCP_DISABLE_TELEMETRY = "1"

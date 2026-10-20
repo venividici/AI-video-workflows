@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/aivw/shots.schema.json",
+  "title": "Storyboard rows, timing and import audit",
+  "type": "object",
+  "required": ["schema_version", "shots", "issues"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "shots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "duration_seconds", "frames", "scene_id", "description", "dialogue"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,95}$"},
+          "duration_seconds": {
+            "type": ["number", "null"], "exclusiveMinimum": 0,
+            "description": "Original seconds. Null marks an unresolved import and cannot be rendered."
+          },
+          "frames": {
+            "type": ["integer", "null"], "minimum": 1,
+            "description": "Decimal ROUND_HALF_UP(duration_seconds * project fps); null cannot be rendered."
+          },
+          "scene_id": {"type": "string", "minLength": 1},
+          "description": {"type": "string"},
+          "dialogue": {"type": "string"},
+          "camera": {"type": "string"},
+          "framing": {"type": "string"},
+          "notes": {"type": "string"},
+          "source": {
+            "type": "object", "required": ["file", "sheet", "row", "shot_number", "raw"],
+            "properties": {
+              "file": {"type": "string"},
+              "sheet": {"type": ["string", "null"]},
+              "row": {"type": "integer", "minimum": 1},
+              "shot_number": {"type": "string"},
+              "raw": {"type": "object"},
+              "formulas": {"type": "object"},
+              "cell_errors": {"type": "array"}
+            },
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["severity", "code", "message"],
+        "properties": {
+          "severity": {"enum": ["warning", "error"]},
+          "code": {"type": "string"},
+          "message": {"type": "string"},
+          "row": {"type": "integer", "minimum": 1}
+        },
+        "additionalProperties": true
+      }
+    },
+    "import": {
+      "type": "object",
+      "required": ["source", "headers", "mapping", "fps", "source_data_rows", "imported_rows", "blank_rows_skipped", "excluded_rows", "quantization"],
+      "properties": {
+        "source": {"type": "object"},
+        "headers": {"type": "object"},
+        "mapping": {"type": "object"},
+        "fps": {"type": "integer", "minimum": 1},
+        "source_data_rows": {"type": "integer", "minimum": 0},
+        "imported_rows": {"type": "integer", "minimum": 0},
+        "blank_rows_skipped": {"type": "array", "items": {"type": "integer", "minimum": 1}},
+        "excluded_rows": {"type": "array"},
+        "quantization": {"type": "array"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "source": "actual_blender_render",
+  "blender_version": "4.5.3 LTS",
+  "blender_build_hash": "67807e1800cc",
+  "ffmpeg_version": "6.1.1-3ubuntu5",
+  "engine": "WORKBENCH",
+  "software_gl": true,
+  "draft_override": true,
+  "verified": {
+    "frames": 84,
+    "fps": "24",
+    "resolution": [
+      320,
+      180
+    ],
+    "duration": "3.500000"
+  },
+  "sources_sha256": {
+    "project.json": "0e276a78d5ae666224752715bc41a2619ac2cb5efad0ae84126efad7c17ce7a7",
+    "shots.json": "f91e90eca4494837e762c221646cf6331f588d44292c5cb7bf7e126f31697026",
+    "scene.json": "4367171211ab714144ed89137549105b1726968b9db0c8d696f5bfd6a019d71f"
+  },
+  "workflow_sha256": {
+    "aivw/blender.py": "6276d76dafa8c5249f7195b8bf204071d9d30f6f7dd6cb2192cb6c040786d440",
+    "blender_scripts/scene_builder.py": "9c1b21c69e3d459d289977d3024b19c101220f9e70aaad38cc8bf3fbf063715e",
+    "blender_scripts/render_frames.py": "5b44c5573b8b080596989eab323574535bd8f90f8b06b4b54640a589f27193fb"
+  },
+  "outputs_sha256": {
+    "previs.mp4": "52b43e0bb6906495042fd766100dfcb4322f0d4287b9078a26d148f9c8112ee3",
+    "contact-sheet.jpg": "98f00fb364f5e9b9a6759f32c570458096c3cd83915b14c886db058ead03754f"
+  },
+  "assembly": {
+    "schema_version": "1.0",
+    "status": "complete",
+    "frames": 84,
+    "fps": 24,
+    "resolution": [
+      320,
+      180
+    ],
+    "video_sha256": "52b43e0bb6906495042fd766100dfcb4322f0d4287b9078a26d148f9c8112ee3",
+    "verified": {
+      "frames": 84,
+      "fps": "24",
+      "resolution": [
+        320,
+        180
+      ],
+      "duration": "3.500000"
+    },
+    "shots": [
+      {
+        "id": "p001",
+        "frames": 48,
+        "fingerprint": "6d1a9a3989a48f85e243aea1bfc3c1c711c64edf35b28c9e3adc278885cd9ba0",
+        "video_sha256": "d2df14a8c29437ae53ed36e97bd3e407fb6f42ff9c13cb68a4a6297309f9ab98"
+      },
+      {
+        "id": "p002",
+        "frames": 36,
+        "fingerprint": "80ff614b991f91a59bfb22aa194f089f1402d19fef61b8218f7e7091fec45b1e",
+        "video_sha256": "221f3966f0934485780534ef8f70a3568d88be91447157fde8f950125e86b276"
+      }
+    ]
+  },
+  "visual_check": "First/middle/last frame contact sheet inspected; camera coverage and proxy blocking checked. This is not performance approval."
+}

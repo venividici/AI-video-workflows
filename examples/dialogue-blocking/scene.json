@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "materials": {
+    "floor": {"base_color": [0.22, 0.25, 0.29, 1], "roughness": 1},
+    "wall": {"base_color": [0.65, 0.69, 0.72, 1], "roughness": 1},
+    "table": {"base_color": [0.38, 0.4, 0.44, 1], "roughness": 0.8},
+    "actor_a": {"base_color": [0.24, 0.58, 0.68, 1], "roughness": 0.8},
+    "actor_b": {"base_color": [0.88, 0.56, 0.28, 1], "roughness": 0.8},
+    "marker": {"base_color": [0.85, 0.89, 0.91, 1], "roughness": 0.9}
+  },
+  "objects": [
+    {"id": "floor", "type": "box", "location": [0, 0, -0.1], "dimensions": [9, 7, 0.2], "material": "floor"},
+    {"id": "back_wall", "type": "box", "location": [0, 2.6, 1.5], "dimensions": [9, 0.12, 3], "material": "wall"},
+    {"id": "table_top", "type": "box", "location": [0, 0.6, 0.78], "dimensions": [1.7, 0.8, 0.1], "material": "table"},
+    {"id": "table_foot", "type": "box", "location": [0, 0.6, 0.35], "dimensions": [0.25, 0.5, 0.7], "material": "table"},
+    {"id": "a", "type": "actor", "location": [-1.2, 0, 0], "rotation_degrees": [0, 0, 90], "material": "actor_a"},
+    {"id": "b", "type": "actor", "location": [1.2, 0, 0], "rotation_degrees": [0, 0, -90], "material": "actor_b"},
+    {"id": "a_mark", "type": "cylinder", "location": [-1.2, 0, 0.012], "dimensions": [0.65, 0.65, 0.024], "material": "marker"},
+    {"id": "b_mark", "type": "cylinder", "location": [1.2, 0, 0.012], "dimensions": [0.65, 0.65, 0.024], "material": "marker"}
+  ],
+  "scenes": {"meeting_stage": {"objects": ["floor", "back_wall", "table_top", "table_foot", "a", "b", "a_mark", "b_mark"], "background": [0.08, 0.09, 0.12]}},
+  "cameras": {
+    "establishing": {"location": [0, -7.6, 3.2], "target": [0, 0.1, 1], "lens_mm": 42},
+    "on_a": {"location": [2.1, -0.35, 1.65], "target": [-1.2, 0, 1.35], "lens_mm": 50},
+    "on_b": {"location": [-2.1, -0.35, 1.65], "target": [1.2, 0, 1.35], "lens_mm": 50}
+  },
+  "shots": {
+    "d001": {"scene": "meeting_stage", "camera": "establishing", "animation": [
+      {"object": "a", "property": "location", "interpolation": "BEZIER", "keyframes": [{"frame": 1, "value": [-2.8, 0, 0]}, {"frame": 38, "value": [-1.2, 0, 0]}, {"frame": 48, "value": [-1.2, 0, 0]}]}
+    ], "camera_keyframes": [{"frame": 1, "location": [0, -7.6, 3.2], "target": [0, 0.1, 1]}, {"frame": 48, "location": [0, -6.9, 2.9], "target": [0, 0.1, 1]}]},
+    "d002": {"scene": "meeting_stage", "camera": "on_a"},
+    "d003": {"scene": "meeting_stage", "camera": "on_b"}
+  }
+}

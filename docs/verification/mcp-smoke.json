@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "transport": "mcp-stdio",
+  "output": "mcp-smoke.png",
+  "token": "AIVW_SMOKE_1d9fea7fac28",
+  "result": "Code executed successfully: AIVW_SMOKE={\"token\": \"AIVW_SMOKE_1d9fea7fac28\", \"blender_version\": \"4.5.3 LTS\", \"keyframes\": [-0.5, 0.5], \"output\": \"mcp-smoke.png\", \"rendered\": true}\nAIVW_CLEANUP={\"restored_scene\": \"Scene\", \"temporary_scene_removed\": true}\n",
+  "codex_session_tools_verified": false,
+  "path_sanitized": true,
+  "startup": "--factory-startup"
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "provider": "seedance",
+  "profile": "seedance-2.5",
+  "verified_at": "2026-10-20",
+  "model": null,
+  "model_selection": "Copy an actually enabled Seedance 2.5 model or endpoint ID from your own provider console. No default ID is assumed.",
+  "api_base": "https://ark.cn-beijing.volces.com/api/v3",
+  "alternate_api_base": "https://ark.ap-southeast.bytepluses.com/api/v3",
+  "api_key_environment": "ARK_API_KEY",
+  "default_mode": "manual",
+  "implemented_operations": ["prepare", "submit", "poll", "download"],
+  "implemented_task_types": ["reference", "edit"],
+  "request_parameters": {
+    "omni_reference_task_type": ["reference", "edit"],
+    "resolution": ["480p", "720p", "1080p"],
+    "reference_duration_integer_seconds": {"minimum": 4, "maximum": 30},
+    "edit_duration": -1,
+    "edit_ratio": "adaptive",
+    "content_types": ["text", "image_url", "video_url", "audio_url"],
+    "reference_roles": ["reference_image", "reference_video", "reference_audio"],
+    "output_format": ["mp4", "mov"]
+  },
+  "input_limits": {
+    "images": 30,
+    "videos": 10,
+    "audio_clips": 10,
+    "combined_video_seconds": 30,
+    "combined_audio_seconds": 30,
+    "single_reference_video_seconds": {"minimum": 2, "maximum": 30},
+    "edit_source_video_seconds": {"minimum": 4, "maximum": 30},
+    "reference_video_fps": {"minimum": 24, "maximum": 60}
+  },
+  "operational_guards": {
+    "prepare_uses_network": false,
+    "automatic_material_upload": false,
+    "automatic_paid_submission": false,
+    "automatic_post_retry": false,
+    "post_timeout_state": "unknown",
+    "required_submit_flags": ["--confirm-paid", "--max-tasks"],
+    "optional_generation_duration_cap": "--max-generated-seconds",
+    "currency_cap_implemented": false,
+    "remote_reference_bytes_verified": false,
+    "download_preserves_original_bytes": true
+  },
+  "not_implemented": [
+    "first_frame / last_frame mode",
+    "draft-to-final mode",
+    "video extension",
+    "trusted portrait asset creation or authorization",
+    "automatic media upload",
+    "automatic quality approval",
+    "automatic final edit or audio mixing",
+    "Seedance 2.0 / 1.x protocol adaptation"
+  ],
+  "sources": [
+    "https://seed.bytedance.com/en/seedance2_5",
+    "https://console.volcengine.com/ark/region:cn-beijing/docs/create-video-generation-task-api",
+    "https://console.volcengine.com/ark/region:cn-beijing/docs/82379/2607689?lang=zh",
+    "https://ai.byteplus.com/ark/region:ap-southeast-1/docs/create-video-generation-task-api",
+    "https://docs.volcengine.com/docs/ark/upload-real-person-portrait-assets?lang=zh"
+  ]
+}

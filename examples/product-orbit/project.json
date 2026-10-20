@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0", "id": "product-orbit", "title": "通用示例：桌面灯产品运镜",
+  "fps": 24, "resolution": [640, 360],
+  "paths": {"shots": "shots.json", "scene": "scene.json", "build": "build", "renders": "renders", "outputs": "outputs", "references": "references"},
+  "provider": {"name": "seedance", "mode": "manual", "model": null}
+}

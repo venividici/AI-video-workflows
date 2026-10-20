@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "shots": [
+    {"id": "d001", "duration_seconds": 2.0, "frames": 48, "scene_id": "meeting_stage", "description": "全景。人物A沿桌侧走近人物B，停在地面标记。", "dialogue": "", "source": {"file": "self-authored-example", "sheet": null, "row": 1, "shot_number": "1", "raw": {"purpose": "two actor blocking"}}},
+    {"id": "d002", "duration_seconds": 1.5, "frames": 36, "scene_id": "meeting_stage", "description": "同侧机位，越过人物B肩部看向人物A。", "dialogue": "交接清单在这里。", "source": {"file": "self-authored-example", "sheet": null, "row": 2, "shot_number": "2", "raw": {"purpose": "reverse-shot coverage"}}},
+    {"id": "d003", "duration_seconds": 1.5, "frames": 36, "scene_id": "meeting_stage", "description": "保持轴线一侧，越过人物A肩部看向人物B。", "dialogue": "好，我们逐项核对。", "source": {"file": "self-authored-example", "sheet": null, "row": 3, "shot_number": "3", "raw": {"purpose": "matching eyelines"}}}
+  ],
+  "issues": []
+}

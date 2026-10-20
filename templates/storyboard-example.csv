@@ -1,0 +1,4 @@
+Shot,Seconds,Action,Dialogue,Scene,Camera,Framing,Notes
+1,2,A small red delivery cart waits beside a blue parcel.,,courtyard,Slow push,Wide,Generic fictional robotics demonstration
+2,0.5,An indicator on the cart changes from amber to green.,,courtyard,Fixed,Close-up,Keep the indicator position consistent
+3,3,The cart travels toward the loading zone with the parcel.,Package ready.,courtyard,Side tracking,Medium,Block the motion in scene.json before rendering

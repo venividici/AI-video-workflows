@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0", "id": "dialogue-blocking", "title": "通用示例：双人走位与反打",
+  "fps": 24, "resolution": [640, 360],
+  "paths": {"shots": "shots.json", "scene": "scene.json", "build": "build", "renders": "renders", "outputs": "outputs", "references": "references"},
+  "provider": {"name": "seedance", "mode": "manual", "model": null}
+}

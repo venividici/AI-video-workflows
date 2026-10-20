@@ -1,0 +1,30 @@
+{
+  "source": "real_mcp_stdio_to_background_blender",
+  "package": "mcp-for-blender==2.2.1",
+  "scene_observation": "Scene 'aivw_p001' | 1 camera, 2 light, 6 mesh | active aivw_p001_bulb | selected aivw_p001_bulb | mode OBJECT\n\nShowing 9 of 9 (name | type | location | size | hidden | children):\naivw_p001_stage | mesh | at (0.0, 0.0, -0.1) | size 6.0x6.0x0.2\naivw_p001_plinth | mesh | at (0.0, 0.0, 0.12) | size 1.9x1.9x0.24\naivw_p001_base | mesh | at (0.0, 0.0, 0.31) | size 0.85x0.85x0.14\naivw_p001_arm | mesh | at (0.0, 0.0, 0.95) | size 0.09x0.09x1.2\naivw_p001_shade | mesh | at (0.0, 0.0, 1.65) | size 1.1x1.1x0.65\naivw_p001_bulb | mesh | at (0.0, 0.0, 1.31) | size 0.26x0.26x0.26\naivw_p001_camera | camera | at (3.5, -4.8, 2.4)\naivw_p001_key | light | at (1.0, -3.0, 6.0)\naivw_p001_fill | light | at (-3.0, 2.0, 4.0)",
+  "save_version_preserved": true,
+  "render": {
+    "operation": "render",
+    "shots": [
+      {
+        "shot": "p001",
+        "rendered_frames": 48,
+        "reused_frames": 0,
+        "invalidated_cache": true,
+        "file": "mcp-roundtrip.mp4",
+        "verified": {
+          "frames": 48,
+          "fps": "24",
+          "resolution": [
+            160,
+            90
+          ],
+          "duration": "2.000000"
+        },
+        "sha256": "b1be06c2da08f6d77b835612976c5bf86f0fd5c00abed3eccefdda2f36af9d03"
+      }
+    ]
+  },
+  "codex_session_tools_verified": false,
+  "path_sanitized": true
+}

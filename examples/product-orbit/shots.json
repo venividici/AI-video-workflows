@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "shots": [
+    {"id": "p001", "duration_seconds": 2.0, "frames": 48, "scene_id": "product_stage", "description": "摄影机沿台灯外侧绕行，保持灯罩与底座完整入画。", "dialogue": "", "source": {"file": "self-authored-example", "sheet": null, "row": 1, "shot_number": "A", "raw": {"purpose": "camera motion"}}},
+    {"id": "p002", "duration_seconds": 1.5, "frames": 36, "scene_id": "product_stage", "description": "摄影机推近底座与灯臂连接处，展示空间关系。", "dialogue": "", "source": {"file": "self-authored-example", "sheet": null, "row": 2, "shot_number": "B", "raw": {"purpose": "detail framing"}}}
+  ],
+  "issues": []
+}

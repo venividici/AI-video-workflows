@@ -1,0 +1,10 @@
+{
+  "shot_number": "镜号",
+  "duration_seconds": "时长（秒）",
+  "description": "画面内容",
+  "dialogue": "声音 / 对白",
+  "scene_id": "场次",
+  "camera": "运镜方式",
+  "framing": "景别",
+  "notes": "特效 / 备注"
+}
