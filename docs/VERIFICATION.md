@@ -30,6 +30,8 @@ AIVW_RUN_BLENDER_TESTS=1 BLENDER_BIN=/absolute/path/to/blender LIBGL_ALWAYS_SOFT
 | Seedance | 18 | 本地 HTTP mock：任务成功/失败/未知、避免重复提交、回执恢复、下载校验与费用边界 |
 | 最终初剪 | 10 | 真实 FFmpeg：精确帧数、切点顺序、帧率转换、音频处理、原片保护和过期来源拒绝 |
 
+首次 GitHub Windows 检查另发现系统 CP1252 管道编码无法输出中文帮助。CLI 已统一 UTF-8，新增 3 项独立子进程回归检查：旧编码下的中文帮助、中文项目名称与 JSON 文件、失败 probe 的报告落盘。完整测试集现包含 71 项；上面保存的 68 项日志对应新增 CLI 回归之前的全量运行，新增项与远端复验记录分别核对，未把历史日志改写为不存在的运行。
+
 ## 2. 真实 Blender MCP 联通
 
 在临时 Xvfb 显示上启动了真实 Blender GUI，使用测试端口 19876。配置与 addon 由本仓库命令生成；运行了真正的固定版本 MCP server，并执行 `initialize → tools/list → tools/call`。
@@ -74,6 +76,8 @@ MCP 握手的 `serverInfo.version` 返回 `1.30.0`，是服务框架自报值；
 ## 5. 自动检查与实测边界
 
 `.github/workflows/verify.yml` 在 push / pull request 时运行 Linux 与 Windows Python 检查；真实 Blender 下载与渲染任务通过 `workflow_dispatch` 手动触发，使用上述固定校验值。CI 的实际运行状态以 GitHub Actions 页面为准，本地通过不代表所有远端作业已经运行。
+
+Windows CI 没有安装 FFmpeg 时，媒体测试会明确跳过；Linux CI 安装 FFmpeg 后运行这些检查。两类 CI 默认均跳过需要显式启用的真实 Blender 测试，不能用 CI 绿灯代替本页的 Blender 实测证据。
 
 已真实运行的是 Linux 上的 Blender GUI / 后台渲染、MCP STDIO 和 FFmpeg。本次未在 macOS 或 Windows 桌面上运行 Blender GUI，也没有验证使用方的显卡、插件组合或本地 Codex 重开行为。
 
